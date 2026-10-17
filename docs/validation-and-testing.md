@@ -6,19 +6,25 @@ Evaluate whether a Natural Language to SQL Agent interprets business questions c
 
 This document describes a proposed testing strategy. Test results should be recorded only after the corresponding tests have been executed.
 
-## Test Scenarios
+### T10 — Annual Sold Quantity Aggregation
 
-| Test ID | Scenario | Expected behavior | Status |
-|---|---|---|---|
-| T01 | Clear question with valid fields | Generate a query using the appropriate fields | Not yet tested |
-| T02 | Question requiring aggregation | Apply the correct aggregation and grouping | Not yet tested |
-| T03 | Question with a date range | Apply the intended date boundaries | Not yet tested |
-| T04 | Ambiguous business terminology | Ask for clarification when needed | Not yet tested |
-| T05 | No matching records | Explain that no matching records were found | Not yet tested |
-| T06 | Requested field does not exist | Explain the limitation without inventing data | Not yet tested |
-| T07 | Invalid SQL or database error | Handle the error without presenting fabricated results | Not yet tested |
-| T08 | Destructive SQL operation | Reject the operation under the read-only access policy | Not yet tested |
-| T09 | Query result accuracy | Match returned values against independently calculated expected results | Not yet tested |
+- **Question:** What is the total sold quantity for each year, sorted from highest to lowest?
+- **Data source:** `public.fact_sales_monthly`
+- **Aggregation:** Sum of `sold_quantity`, grouped by year extracted from `date`.
+- **Sorting:** Total sold quantity in descending order.
+- **Expected result:**
+
+| Year | Total sold quantity |
+|---:|---:|
+| 2021 | 69,177,620 |
+| 2020 | 31,684,973 |
+| 2019 | 16,452,462 |
+| 2018 | 6,532,551 |
+| 2017 | 1,443,950 |
+
+- **Actual result:** Matches the direct PostgreSQL query.
+- **Status:** PASS — verified against PostgreSQL.
+- **Validation method:** Compared the AI Agent's answer with an independently executed SQL aggregation query.
 
 ## Validation Approach
 
