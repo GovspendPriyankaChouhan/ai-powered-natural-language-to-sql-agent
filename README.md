@@ -134,6 +134,34 @@ The n8n workflow has successfully executed a natural-language request through th
 
 *This is an independent portfolio demonstration. The database data should be synthetic, and credentials, API keys, and private connection details are excluded from the repository.*
 
+## Setup and Reproduction
+
+### Prerequisites
+- An n8n instance (this prototype was built using n8n Cloud).
+- A Google Gemini Chat Model credential configured in n8n.
+- A Supabase PostgreSQL database containing the required sales data.
+- A PostgreSQL credential configured in n8n.
+
+### Workflow Setup
+1. Configure the **When chat message received** trigger.
+2. Add an **AI Agent** and connect a Google Gemini Chat Model.
+3. Connect **Simple Memory** for conversational context.
+4. Add the PostgreSQL query tool and configure its database credential.
+5. Ensure the database contains `public.fact_sales_monthly` with the `date` and `sold_quantity` columns used in the demonstrated query.
+6. Test the workflow with a natural-language question and compare the answer against a direct SQL query.
+
+### Example Question
+"What is the total sold quantity for each year, sorted from highest to lowest?"
+
+The agent can use a query that groups `sold_quantity` by the year extracted from `date` and sorts the totals in descending order.
+
+### Configuration and Security
+- Configure credentials directly in n8n; never commit passwords, API keys, or connection strings.
+- Use synthetic or otherwise authorized data.
+- Prefer a dedicated database user with read-only permissions.
+- Validate generated SQL and restrict database access to the minimum required.
+
+**Note:** This repository documents the workflow and its verified prototype behavior. A sanitized, directly importable workflow export and a fully automated deployment process are not currently included.
 ## Disclaimer
 
 This repository presents a generalized portfolio design inspired by a business use case. It is an independent demonstration and is not the original production implementation of any employer or client system.
