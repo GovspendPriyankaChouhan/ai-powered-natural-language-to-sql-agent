@@ -38,9 +38,11 @@ The workflow is designed to:
 
 **User Question → Chat Trigger → AI Agent and LLM → Schema Discovery → SQL Generation → PostgreSQL Query Execution → Result Interpretation → Conversational Answer**
 
-For ambiguous requests, the workflow should request clarification before proceeding.
+## Workflow Execution
 
-The architecture is conceptual and should be updated to reflect the components actually implemented in the portfolio demonstration.
+The following screenshot shows the n8n workflow with the Google Gemini Chat Model, Simple Memory, and PostgreSQL query tool connected to the AI Agent.
+
+![n8n workflow overview](n8n-workflow-overview.png)
 
 ## Key Capabilities
 
