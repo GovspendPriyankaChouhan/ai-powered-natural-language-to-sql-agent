@@ -112,7 +112,25 @@ This project demonstrates practical exploration of:
 
 ## Project Status
 
-**Portfolio status:** Documentation and architecture draft. The synthetic-data demonstration, workflow implementation, and validation tests should be added as they are completed.
+**Status: Working prototype — initial end-to-end execution successful.**
+
+The n8n workflow has successfully executed a natural-language request through the AI Agent and Google Gemini Chat Model, invoked a PostgreSQL query tool connected to Supabase, and returned a conversational answer.
+
+### Implemented Components
+- Chat-based input using the n8n Chat Trigger
+- AI Agent powered by Google Gemini
+- PostgreSQL query execution through Supabase
+- Conversation memory using n8n Simple Memory
+- Natural-language questions translated into SQL queries
+
+### Next Steps
+- Test multiple questions against known SQL results
+- Validate ambiguous questions and unavailable data
+- Document database schema and relationships
+- Strengthen read-only database permissions and SQL safeguards
+- Add sanitized screenshots and final test results
+
+*This is an independent portfolio demonstration. The database data should be synthetic, and credentials, API keys, and private connection details are excluded from the repository.*
 
 ## Disclaimer
 
